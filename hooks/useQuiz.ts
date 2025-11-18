@@ -2,9 +2,25 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { Question } from '../types';
 
+// Helper function to shuffle answer options for a question
+const shuffleOptions = (question: Question): Question => {
+  const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
+  return {
+    ...question,
+    options: shuffledOptions,
+  };
+};
+
+// Helper function to shuffle questions AND their options
+const shuffleQuestionsAndOptions = (questions: Question[]): Question[] => {
+  return questions
+    .map(q => shuffleOptions(q))
+    .sort(() => Math.random() - 0.5);
+};
+
 const useQuiz = (initialQuestions: Question[]) => {
   const [questions, setQuestions] = useState(() =>
-    initialQuestions.length > 0 ? [...initialQuestions].sort(() => Math.random() - 0.5) : []
+    initialQuestions.length > 0 ? shuffleQuestionsAndOptions([...initialQuestions]) : []
   );
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -15,7 +31,7 @@ const useQuiz = (initialQuestions: Question[]) => {
   // Update questions when initialQuestions changes
   useEffect(() => {
     if (initialQuestions.length > 0) {
-      setQuestions([...initialQuestions].sort(() => Math.random() - 0.5));
+      setQuestions(shuffleQuestionsAndOptions([...initialQuestions]));
       setCurrentQuestionIndex(0);
       setScore(0);
       setSelectedAnswer(null);
@@ -52,7 +68,7 @@ const useQuiz = (initialQuestions: Question[]) => {
   }, [currentQuestionIndex, totalQuestions]);
 
   const handleRestart = useCallback(() => {
-    setQuestions([...initialQuestions].sort(() => Math.random() - 0.5));
+    setQuestions(shuffleQuestionsAndOptions([...initialQuestions]));
     setCurrentQuestionIndex(0);
     setScore(0);
     setSelectedAnswer(null);
