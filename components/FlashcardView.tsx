@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Question } from '../types';
 import { CheckCircle, XCircle, ArrowRight } from 'lucide-react';
+import { getRandomOllieImage, getRandomJawaanImage } from '../utils/images';
 
 interface FlashcardViewProps {
   question: Question;
@@ -13,9 +14,11 @@ interface FlashcardViewProps {
 }
 
 const FeedbackDisplay: React.FC<{ isCorrect: boolean; correctAnswer: string }> = ({ isCorrect, correctAnswer }) => {
-    const imageUrl = isCorrect
-      ? '/Ollie/Ollie.png'
-      : '/Ollie/Jawaan.png';
+    // Select a random image for each feedback display
+    const imageUrl = useMemo(() =>
+      isCorrect ? getRandomOllieImage() : getRandomJawaanImage(),
+      [isCorrect]
+    );
     const feedbackText = isCorrect ? "Great job!" : "The correct answer is:";
 
     return (

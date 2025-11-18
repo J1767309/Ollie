@@ -1,6 +1,7 @@
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Award, RotateCw } from 'lucide-react';
+import { getRandomOllieImage, getRandomJawaanImage } from '../utils/images';
 
 interface ResultsViewProps {
   score: number;
@@ -11,13 +12,18 @@ interface ResultsViewProps {
 const ResultsView: React.FC<ResultsViewProps> = ({ score, totalQuestions, onRestart }) => {
   const percentage = Math.round((score / totalQuestions) * 100);
 
+  // Get random image based on score
+  const randomImage = useMemo(() => {
+    return percentage >= 50 ? getRandomOllieImage() : getRandomJawaanImage();
+  }, [percentage]);
+
   const getFeedback = () => {
     if (percentage === 100) {
       return {
         title: "Perfect Score!",
         message: "You're a true weather and climate expert!",
         color: "text-amber-500",
-        image: "/Ollie/Ollie.png",
+        image: randomImage,
         bgColor: "bg-green-50"
       };
     }
@@ -26,7 +32,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({ score, totalQuestions, onRest
           title: "Excellent Job!",
           message: "You have a strong understanding of these concepts.",
           color: "text-green-500",
-          image: "/Ollie/Ollie.png",
+          image: randomImage,
           bgColor: "bg-green-50"
       };
     }
@@ -35,7 +41,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({ score, totalQuestions, onRest
         title: "Good Effort!",
         message: "You're on your way to mastering this topic.",
         color: "text-sky-500",
-        image: "/Ollie/Ollie.png",
+        image: randomImage,
         bgColor: "bg-sky-50"
       };
     }
@@ -43,7 +49,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({ score, totalQuestions, onRest
       title: "Keep Studying!",
       message: "Review the flashcards and try again to improve your score.",
       color: "text-slate-500",
-      image: "/Ollie/Jawaan.png",
+      image: randomImage,
       bgColor: "bg-red-50"
     };
   };
