@@ -11,13 +11,13 @@ const ChapterSelection: React.FC<ChapterSelectionProps> = ({ onSelectChapter }) 
       {/* Special Message with Images */}
       <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-6 border-2 border-purple-300 shadow-lg">
         <div className="flex flex-col md:flex-row items-center gap-4 justify-center">
-          <img src="/Ollie.png" alt="Ollie" className="w-24 h-24 rounded-full object-cover shadow-md" />
+          <img src="/Ollie/Ollie.png" alt="Ollie" className="w-32 h-32 md:w-36 md:h-36 rounded-full object-cover shadow-md" />
           <div className="text-center md:text-left">
             <p className="text-lg md:text-xl font-bold text-purple-800">
               Ollie, Jawaan created this for you to learn your scientific facts about weather!
             </p>
           </div>
-          <img src="/Jawaan.png" alt="Jawaan" className="w-24 h-24 rounded-full object-cover shadow-md" />
+          <img src="/Ollie/Jawaan.png" alt="Jawaan" className="w-32 h-32 md:w-36 md:h-36 rounded-full object-cover shadow-md" />
         </div>
       </div>
 

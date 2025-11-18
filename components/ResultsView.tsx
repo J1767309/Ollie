@@ -17,7 +17,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({ score, totalQuestions, onRest
         title: "Perfect Score!",
         message: "You're a true weather and climate expert!",
         color: "text-amber-500",
-        image: "/Ollie.png",
+        image: "/Ollie/Ollie.png",
         bgColor: "bg-green-50"
       };
     }
@@ -26,7 +26,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({ score, totalQuestions, onRest
           title: "Excellent Job!",
           message: "You have a strong understanding of these concepts.",
           color: "text-green-500",
-          image: "/Ollie.png",
+          image: "/Ollie/Ollie.png",
           bgColor: "bg-green-50"
       };
     }
@@ -35,7 +35,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({ score, totalQuestions, onRest
         title: "Good Effort!",
         message: "You're on your way to mastering this topic.",
         color: "text-sky-500",
-        image: "/Ollie.png",
+        image: "/Ollie/Ollie.png",
         bgColor: "bg-sky-50"
       };
     }
@@ -43,7 +43,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({ score, totalQuestions, onRest
       title: "Keep Studying!",
       message: "Review the flashcards and try again to improve your score.",
       color: "text-slate-500",
-      image: "/Jawaan.png",
+      image: "/Ollie/Jawaan.png",
       bgColor: "bg-red-50"
     };
   };
@@ -57,7 +57,7 @@ const ResultsView: React.FC<ResultsViewProps> = ({ score, totalQuestions, onRest
         <img
           src={feedback.image}
           alt="Result"
-          className="w-32 h-32 rounded-full object-cover shadow-lg"
+          className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover shadow-lg"
         />
       </div>
 

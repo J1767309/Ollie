@@ -14,13 +14,13 @@ interface FlashcardViewProps {
 
 const FeedbackDisplay: React.FC<{ isCorrect: boolean; correctAnswer: string }> = ({ isCorrect, correctAnswer }) => {
     const imageUrl = isCorrect
-      ? '/Ollie.png'
-      : '/Jawaan.png';
+      ? '/Ollie/Ollie.png'
+      : '/Ollie/Jawaan.png';
     const feedbackText = isCorrect ? "Great job!" : "The correct answer is:";
 
     return (
         <div className={`mt-4 p-4 rounded-lg flex flex-col md:flex-row items-center gap-4 ${isCorrect ? 'bg-green-100 border-green-400' : 'bg-red-100 border-red-400'} border`}>
-            <img src={imageUrl} alt="Feedback" className="w-32 h-32 md:w-24 md:h-24 object-cover rounded-lg shadow-md" />
+            <img src={imageUrl} alt="Feedback" className="w-40 h-40 md:w-32 md:h-32 object-cover rounded-lg shadow-md" />
             <div className="text-center md:text-left">
                 <p className={`font-bold text-lg ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>{feedbackText}</p>
                 {!isCorrect && <p className="text-slate-700 mt-1">{correctAnswer}</p>}
